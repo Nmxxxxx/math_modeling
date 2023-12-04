@@ -2,7 +2,7 @@ figura = input('Выбери фигуру: круг, прямоугольник,
 
 def Svishislyator():
     if figura == 'круг':
-        R = input('Введи радиус:')
+        R = int(input('Введи радиус:'))
         return 3.14 * (R**2)
     elif figura == 'прямоугольник':
         a = int(input('Введи сторону:'))
@@ -10,7 +10,7 @@ def Svishislyator():
         return a*b
     elif figura == 'прямоугольник(синус)':
         d = int(input('Введи диагональ:'))
-        sin = input('Введи синус угла: ')
+        sin = float(input('Введи синус угла: '))
         return 0.5*d*sin
     elif figura == 'треугольник':
         osn = int(input('Введи основание: '))
