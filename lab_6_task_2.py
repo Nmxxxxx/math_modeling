@@ -6,14 +6,6 @@ def hiperbola(x_min, x_max, N):
     x = np.linspace(x_min,x_max, N)
     k = 10
     y = k / x
-    for i in x:
-        if i != 0 and i != 1:
-            y = k / i
-            y_sorted = []
-            y_sorted.append(i)
-            print(y_sorted)
-        else:
-            pass
 
 
     plt.plot(x, y, color='black')
