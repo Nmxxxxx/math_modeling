@@ -11,14 +11,14 @@ def astroid(R, time, angle_vel):
     y = (R/4) * np.sin(t) ** 3
     return x, y
 #angle_vel = изменение угла
-def animate(i):
+def animate():
 
-    astroida.set_data(astroid(R=16, angle_vel=np.linspace(-2*np.pi, 2*np.pi, 100), time=i))
+    astroida.set_data(astroid(R=16, angle_vel=np.linspace(-2*np.pi, 2*np.pi, 100), time=10))
 
 if __name__ == '__main__':
     fig, ax = plt.subplots()
 
-    astroida, = plt.plot([], [], '-', color='r', label='Astroida')
+    astroida, = plt.plot([], [], '-', color='r', label='circle-raz')
 
     edge = 3
     plt.axis('equal')

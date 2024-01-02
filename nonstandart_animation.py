@@ -17,7 +17,7 @@ def animate(i):
 if __name__ == '__main__':
 
     fig, ax = plt.subplots()
-    asd, = plt.plot([], [], '-', color='purple', label='Asd')
+    asd, = plt.plot([], [], '-', color='r', label='Asd')
 
     edge = 3
     plt.axis('equal')
