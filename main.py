@@ -11,11 +11,17 @@ def interference_of_light_waves(angle_vel, a, time):
     y = r * np.sin(angle_vel)
     return x, y
 
+def interference_of_light_waves_stable(angle_vel, r):
+
+    x = r * np.cos(angle_vel)
+    y = r * np.sin(angle_vel)
+    return x, y
+
 
 
 def animate(i):
 
-    # interference.set_data(interference_of_light_waves(angle_vel=np.linspace(0, np.pi, 100), a=0.3, time=i))
+    interference.set_data(interference_of_light_waves_stable(angle_vel=np.linspace(0, np.pi, 100), r=0.25))
     interference2.set_data(interference_of_light_waves(angle_vel=np.linspace(0, np.pi, 100), a=0.4, time=i))
     interference3.set_data(interference_of_light_waves(angle_vel=np.linspace(0, np.pi, 100), a=0.5, time=i))
     interference4.set_data(interference_of_light_waves(angle_vel=np.linspace(0, np.pi, 100), a=0.6, time=i))
