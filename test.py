@@ -16,12 +16,12 @@ def interference_of_light_waves_stable1(x0, r):
 
 def interference_of_light_waves_stable2(x0, y0, r):
     angle=np.linspace(0, np.pi, 100)
-    x = y0 + r * np.cos(angle)
+    x = x0 + r * np.cos(angle)
     y = r * np.sin(angle)
     return x, y
 def interference_of_light_waves_stable3(x0 ,y0, r):
     angle=np.linspace(0, np.pi, 100)
-    x = y0 + r * np.cos(angle)
+    x = x0 + r * np.cos(angle)
     y = r * np.sin(angle)
     return x, y
 
@@ -38,7 +38,7 @@ def animate(radius):
     x.append(coords2[0])
     y.append(coords2[1])
     interference2.set_data(x, y)
-    
+
     coords3 = interference_of_light_waves_stable3(-2.5, 3, r=radius)
     x.append(coords2[0])
     y.append(coords2[1])
