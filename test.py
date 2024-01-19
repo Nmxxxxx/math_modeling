@@ -4,10 +4,10 @@ from matplotlib.animation import FuncAnimation
 import time
 
 
-def interference_of_light_waves_stable1(x0, r):
+def interference_of_light_waves_stable1(x0,  r):
     angle=np.linspace(0, np.pi, 100)
     x = x0 + r * np.cos(angle)
-    y = r * np.sin(angle)
+    y =  r * np.sin(angle)
 
     for j in range(len(y)):
         if y[j] > 3:
@@ -17,31 +17,31 @@ def interference_of_light_waves_stable1(x0, r):
 def interference_of_light_waves_stable2(x0, y0, r):
     angle=np.linspace(0, np.pi, 100)
     x = x0 + r * np.cos(angle)
-    y = r * np.sin(angle)
+    y = y0 + r * np.sin(angle)
     return x, y
 def interference_of_light_waves_stable3(x0 ,y0, r):
     angle=np.linspace(0, np.pi, 100)
     x = x0 + r * np.cos(angle)
-    y = r * np.sin(angle)
+    y = y0 + r * np.sin(angle)
     return x, y
 
 x, y = [], []
 
 def animate(radius):
-    coords = interference_of_light_waves_stable1(0, 3, r=radius)
+    coords = interference_of_light_waves_stable1(x0=0, r=radius)
     x.append(coords[0])
     y.append(coords[1])
     interference.set_data(x, y)
 
 
-    coords2 = interference_of_light_waves_stable2(2.5, 3, r=radius)
+    coords2 = interference_of_light_waves_stable2(x0 = 2.5, y0= 3, r=radius)
     x.append(coords2[0])
     y.append(coords2[1])
     interference2.set_data(x, y)
 
-    coords3 = interference_of_light_waves_stable3(-2.5, 3, r=radius)
-    x.append(coords2[0])
-    y.append(coords2[1])
+    coords3 = interference_of_light_waves_stable3(x0 = -2.5, y0 = 3, r=radius)
+    x.append(coords3[0])
+    y.append(coords3[1])
     interference3.set_data(x, y)
 
 
