@@ -4,7 +4,7 @@ from matplotlib.animation import FuncAnimation
 import time
 
 
-def interference_of_light_waves_stable1(x0,  r):
+def interference_of_light_waves_stable1(x0, r):
     angle=np.linspace(0, np.pi, 100)
     x = x0 + r * np.cos(angle)
     y =  r * np.sin(angle)
@@ -26,6 +26,8 @@ def interference_of_light_waves_stable3(x0 ,y0, r):
     return x, y
 
 x, y = [], []
+x2, y2 = [], []
+x3, y3 = [], []
 
 def animate(radius):
     coords = interference_of_light_waves_stable1(x0=0, r=radius)
@@ -33,22 +35,22 @@ def animate(radius):
     y.append(coords[1])
     interference.set_data(x, y)
 
-
+    
     coords2 = interference_of_light_waves_stable2(x0 = 2.5, y0= 3, r=radius)
-    x.append(coords2[0])
-    y.append(coords2[1])
-    interference2.set_data(x, y)
+    x2.append(coords2[0])
+    y2.append(coords2[1])
+    interference2.set_data(x2, y2)
 
     coords3 = interference_of_light_waves_stable3(x0 = -2.5, y0 = 3, r=radius)
-    x.append(coords3[0])
-    y.append(coords3[1])
-    interference3.set_data(x, y)
+    x3.append(coords3[0])
+    y3.append(coords3[1])
+    interference3.set_data(x3, y3)
 
 
 if __name__ == '__main__':
     fig, ax = plt.subplots()
 
-    interference, = plt.plot([], [], '-', color='r', label='Interference Of Light waves')
+    interference, = plt.plot([], [], '-', color='black', label='Interference Of Light waves')
     interference2, = plt.plot([], [], '-', color='black', label='Interference Of Light waves')
     interference3, = plt.plot([], [], '-', color='black', label='Interference Of Light waves')
     plt.axhline(y=3, color='purple')
@@ -57,7 +59,7 @@ if __name__ == '__main__':
     ax.set_xlim(-edge, edge)
     ax.set_ylim(0, edge)
 
-
+    
     ani = FuncAnimation(fig, animate, frames=np.linspace(0, 4, 20), interval=30)
 
     ani.save('Interference_Of_Light_waves_test.gif', fps=30)
