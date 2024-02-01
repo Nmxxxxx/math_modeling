@@ -9,10 +9,10 @@ colors = ['red', 'blue', 'purple', 'green']
 def Butterfly(angle_vel, time):
 
     t = angle_vel * np.pi / 180 * time
-    # x = np.sin(t) * (np.e**np.cos(t) - 2*np.cos(4*t) + np.sin(t/12)**5)
-    # y = np.cos(t) * (np.e**np.cos(t) - 2*np.cos(4*t) + np.sin(t/12)**5)
-    x = 16*np.sin(t)**3
-    y = 13*np.cos(t) - 5*np.cos(2*t) - 2*np.cos(3*t) - np.cos(4*t)
+    x = np.sin(t) * (np.e**np.cos(t) - 2*np.cos(4*t) + np.sin(t/12)**5)
+    y = np.cos(t) * (np.e**np.cos(t) - 2*np.cos(4*t) + np.sin(t/12)**5)
+    # x = 16*np.sin(t)**3
+    # y = 13*np.cos(t) - 5*np.cos(2*t) - 2*np.cos(3*t) - np.cos(4*t)
     return x, y
 #angle_vel = изменение угла
 def animate(i):

@@ -3,12 +3,15 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
 
-def circle_move(x0, y0, C, D, n, time):
+def circle_move(x0, y0, C, D, n, time, angle_vel):
+    
     x = np.zeros(n)
     y = np.zeros(n)
     x[0] = x0
     y[0] = y0
+    
     for j in range(1, n):
+        # t = angle_vel * np.pi / 180 * time
         x[j] = x[j-1] **2 - y[j-1]**2 + C
         y[j] = 2*x[j-1] * y[j-1] + D
 

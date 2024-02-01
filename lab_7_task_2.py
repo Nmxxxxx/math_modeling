@@ -26,5 +26,3 @@ if __name__ == '__main__':
     ax.set_ylim(-edge, edge)
 
     ani = FuncAnimation(fig, animate, frames=360, interval=30)
-
-    ani.save('cirlce_raz.gif', fps=30)
