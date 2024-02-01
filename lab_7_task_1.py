@@ -23,10 +23,13 @@ def dotka(R, angle_vel, time):
     y = R * (1 - np.cos(t))
     return x, y
 
-
+x, y = [], []
 
 def animate(i):
-    cycloida.set_data(cycloid(R=0.5,angle_vel=np.linspace(0, 2*np.pi, 100), time=i))
+    coords = cycloid(R=0.5,angle_vel=1, time=i)
+    x.append(coords[0])
+    y.append(coords[1])
+    cycloida.set_data(x, y)
     dota.set_data(dotka(R = 0.5, angle_vel=1, time = i))
     circle.set_data(circle_move(R=0.5, vx0=0.5, time=i))
 
