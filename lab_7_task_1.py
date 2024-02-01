@@ -4,7 +4,7 @@ from matplotlib.animation import FuncAnimation
 
 def cycloid(R,  time, angle_vel):
 
-    t = angle_vel  * time
+    t = angle_vel * time
 
     x = R * (t - np.sin(t))
     y = R * (1 - np.cos(t))
