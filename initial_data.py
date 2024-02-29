@@ -30,5 +30,5 @@ e = 0.88994
 x0_faeton = 0
 v_x0_faeton = 20122 * np.sqrt((1+e)/(1-e))
 print(v_x0_faeton)
-y0_faeton = 0.14 * 149 * 10**9
+y0_faeton = 0.2 * 149 * 10**9
 v_y0_faeton = 0

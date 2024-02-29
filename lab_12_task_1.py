@@ -7,7 +7,7 @@ import initial_data as si
 
 plt.style.use('dark_background')
 # Определяем переменую величину
-frames = 365
+frames = 720
 seconds_in_year = 365* 24 * 60 * 60
 years = 1
 t = np.linspace(0, years*seconds_in_year, frames)
@@ -139,7 +139,7 @@ def animate(i):
 ani = FuncAnimation(fig, animate, frames=frames, interval=30)
 
 plt.axis('equal')
-edge = 4*si.x0_earth
+edge = 3*si.x0_earth
 ax.set_xlim(-edge, edge)
 ax.set_ylim(-edge, edge)
 ani.save('lab_12_task_1.gif')
