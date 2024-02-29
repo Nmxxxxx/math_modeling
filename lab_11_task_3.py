@@ -11,12 +11,10 @@ t = np.linspace(0, 10, frames)
 def move_func(z, t):
     x, vx, y, vy = z
 
-    # dx_dt = vx
-    dx_dt = vx
-    dvx_dt = k1*(A - x - y)
-    # dy_dt = vy
-    dy_dt = vy
-    dvy_dt = k2*(A - x - y)
+    dx_dt = k1*(A - x - y)
+    dvx_dt = vx
+    dy_dt =  k2*(A - x - y)
+    dvy_dt = vy
 
 
     return dx_dt, dvx_dt, dy_dt, dvy_dt
