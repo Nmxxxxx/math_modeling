@@ -2,7 +2,8 @@ import numpy as np
 from scipy.integrate import odeint
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
-import initial_data as si
+import initial_data_for_2 as si
+import mplcyberpunk
 
 
 plt.style.use('dark_background')
@@ -10,7 +11,7 @@ plt.style.use('dark_background')
 frames = 720
 seconds_in_year = 365* 24 * 60 * 60
 years = 1
-t = np.linspace(0, years*seconds_in_year, frames)
+t = np.linspace(0, 10**(-3), frames)
 
 # Определяем функцию для диф.уравнений
 
@@ -23,45 +24,45 @@ def move_func(s, t):
       si.x0_6, si.v_x0_6, si.y0_6, si.v_y0_6) = s
 # -=---==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-==-==-==-=-=-=-=-=-=-=-=-=
     dx_dt_earth = si.v_x0_earth
-    dv_xdt_earth =  G  * si.q1 / (si.x0_earth**2 + si.y0_earth**2) **1.5
+    dv_xdt_earth =  (k * si.q_large * si.q1 * si.x0_earth / (si.x0_earth**2 + si.y0_earth**2) **1.5) / m
     dydt_earth = si.v_y0_earth
-    dy_ydt_earth =  G  * si.q1 / (si.x0_earth**2 + si.y0_earth**2) **1.5
+    dy_ydt_earth =  (k *si.q_large * si.q1 * si.y0_earth / (si.x0_earth**2 + si.y0_earth**2) **1.5) / m
 
 # -=---==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-==-==-==-=-=-=-=-=-=-=-=-=
     dx_dt_merc = si.v_x0_merc
-    dv_xdt_merc =  G  * si.q2 / (si.x0_merc**2 + si.y0_merc**2) **1.5
+    dv_xdt_merc =  (k *si.q_large * si.q2 * si.x0_merc/ (si.x0_merc**2 + si.y0_merc**2) **1.5) / m
     dydt_merc = si.v_y0_merc
-    dy_ydt_merc =  G  * si.q2 / (si.x0_merc**2 + si.y0_merc**2) **1.5
+    dy_ydt_merc =  (k *si.q_large * si.q2 * si.y0_merc / (si.x0_merc**2 + si.y0_merc**2) **1.5) / m
 # -=---==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-==-==-==-=-=-=-=-=-=-=-=-=
     dx_dt_venus = si.v_x0_venus
-    dv_xdt_venus =  G  * si.q3 / (si.x0_venus**2 + si.y0_venus**2) **1.5
+    dv_xdt_venus =  (k *si.q_large * si.q3 * si.x0_venus / (si.x0_venus**2 + si.y0_venus**2) **1.5) / m
     dydt_venus = si.v_y0_venus
-    dy_ydt_venus =  G  * si.q3 / (si.x0_venus**2 + si.y0_venus**2) **1.5
+    dy_ydt_venus =  (k *si.q_large * si.q3 * si.y0_venus / (si.x0_venus**2 + si.y0_venus**2) **1.5) / m
 # -=---==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-==-==-==-=-=-=-=-=-=-=-=-=
     dx_dt_mars = si.v_x0_mars
-    dv_xdt_mars = - G  * si.q4 / (si.x0_mars**2 + si.y0_mars**2) **1.5
+    dv_xdt_mars = (- k *si.q_large * si.q4 * si.x0_mars / (si.x0_mars**2 + si.y0_mars**2) **1.5) / m
     dydt_mars = si.v_y0_mars
-    dy_ydt_mars = - G  * si.q4 / (si.x0_mars**2 + si.y0_mars**2) **1.5
+    dy_ydt_mars = (- k *si.q_large * si.q4 * si.y0_mars / (si.x0_mars**2 + si.y0_mars**2) **1.5) / m
 
 # -=---==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-==-==-==-=-=-=-=-=-=-=-=-=
     dx_dt_faeton = si.v_x0_faeton
-    dv_xdt_faeton = - G  * si.q5 / (si.x0_faeton**2 + si.y0_faeton**2) **1.5
+    dv_xdt_faeton = (- k *si.q_large * si.q5 * si.x0_faeton / (si.x0_faeton**2 + si.y0_faeton**2) **1.5) / m
     dydt_faeton = si.v_y0_faeton
-    dy_ydt_faeton = - G  * si.q5 / (si.x0_faeton**2 + si.y0_faeton**2) **1.5
+    dy_ydt_faeton = (- k *si.q_large * si.q5 * si.y0_faeton / (si.x0_faeton**2 + si.y0_faeton**2) **1.5) / m
 
     dx_dt_6 = si.v_x0_6
-    dv_xdt_6 = - G  * si.q5 / (si.x0_faeton**2 + si.y0_faeton**2) **1.5
+    dv_xdt_6 = (- k *si.q_large * si.q5 * si.x0_6  / (si.x0_6**2 + si.y0_6**2) **1.5) / m
     dydt_6 = si.v_y0_6
-    dy_ydt_6 = - G  * si.q5 / (si.x0_faeton**2 + si.y0_faeton**2) **1.5
+    dy_ydt_6 = (- k *si.q_large * si.q5 * si.y0_6  /  (si.x0_6**2 + si.y0_6**2) **1.5) / m
 
     return (dx_dt_earth,  dv_xdt_earth, dydt_earth, dy_ydt_earth,
             dx_dt_merc,   dv_xdt_merc,  dydt_merc, dy_ydt_merc,
             dx_dt_venus,  dv_xdt_venus, dydt_venus, dy_ydt_venus,
             dx_dt_mars,   dv_xdt_mars,  dydt_mars, dy_ydt_mars,
             dx_dt_faeton, dv_xdt_faeton, dydt_faeton, dy_ydt_faeton,
-            dx_dt_6, dv_xdt_6, dydt_6, dydt_6)
+            dx_dt_6, dv_xdt_6, dydt_6, dy_ydt_6)
 
-G = 6.67 * 10**(-11)
+k = 9 * 10**(9)
 m = 1.98 * 10**(30)
 
 s0 = (si.x0_earth, si.v_x0_earth, si.y0_earth, si.v_y0_earth,
@@ -135,7 +136,7 @@ ball_line5, = plt.plot([], [], '-', color = 'grey')
 ball6, = plt.plot([], [], 'o', color='g')
 ball_line6, = plt.plot([], [], '-', color = 'g')
 
-plt.plot([0], [0], 'o', color='orange', ms=15)
+plt.plot([0], [0], 'o', color='orange', ms=10)
 
 def animate(i):
     ball1.set_data(solve_func(i, 'point')[0])
@@ -160,7 +161,7 @@ def animate(i):
 ani = FuncAnimation(fig, animate, frames=frames, interval=30)
 
 plt.axis('equal')
-edge = 3*si.x0_earth
+edge = 0.5
 ax.set_xlim(-edge, edge)
 ax.set_ylim(-edge, edge)
 ani.save('lab_12_task_2.gif')
