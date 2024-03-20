@@ -8,7 +8,7 @@ import random
 # Определяем переменую величину
 frames = 365
 second_in_year = 365 * 24 * 60 * 60
-years = 1
+years = 2
 
 t = np.linspace(0, years*second_in_year, frames)
 
@@ -61,12 +61,12 @@ def move_func(s, t):
 
 colors = ['red', 'green', 'purple']
 
-x10 = -149 * 10**9
+x10 = 149 * 10**9
 v_x10 = 5000
 y10 = 0
 v_y10 = 0
 
-x20 = 149 * 10**9
+x20 = -149 * 10**9
 v_x20 = 5000
 y20 = 0
 v_y20 = 0
