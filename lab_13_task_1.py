@@ -26,7 +26,7 @@ def move_func(s, t):
                )
     dydt1 = v_y1
     dv_ydt1 = (- G * m2 * (y1 - y2)/ ((x1-x2)**2 + (y1- y2)**2)**1.5
-               - G * m2 * (y1 - y3)/ ((x1-x3)**2 + (y1- y3)**2)**1.5
+               - G * m3 * (y1 - y3)/ ((x1-x3)**2 + (y1- y3)**2)**1.5
           
                )
     
@@ -59,22 +59,22 @@ def move_func(s, t):
 # Определяем начальные значения и параметры
 
 colors = ['red', 'green', 'purple']
-
-x10 = 149 * 10**9
-v_x10 = 8638
+ae = 149 * 10**9
+x10 = 0
+v_x10 = 0
 y10 = 0
-v_y10 = 30000
+v_y10 = -8638
 
-x20 = -149 * 10**9
-v_x20 = 6000
+x20 = 12.3 * ae
+v_x20 = 0
 y20 = 0
-v_y20 = - 30000
+v_y20 = 6000
 
 
-x30 = 0
-v_x30 = 4000
-y30 = 0.67 * 149 * 10 ** 9
-v_y30 = 0
+x30 = (12.3 + 0.67) * ae
+v_x30 = 0
+y30 = 0
+v_y30 = -4000
 
 
 s0 = (x10, v_x10, y10, v_y10,
@@ -113,7 +113,7 @@ def animate(i):
 ani = FuncAnimation(fig, animate, frames=frames, interval = 30)
 
 plt.axis('equal')
-edge = 2 * x10
+edge = (12.3+0.67) * ae * 1.5
 ax.set_xlim(-edge, edge)
 ax.set_ylim(-edge, edge)
 
